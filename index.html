@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boost Traffic - Especialistas em Tráfego Pago</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #d16e4f;
+            --secondary-color: #e0a38e;
+            --accent-color: #7ea68b;
+            --dark-accent: #966470;
+            --light-bg: #fef8f5;
+            --card-bg: #ffffff;
+            --text-primary: #2d3436;
+            --text-secondary: #636e72;
+            --gradient-warm: linear-gradient(135deg, #d16e4f 0%, #e0a38e 100%);
+            --gradient-cool: linear-gradient(135deg, #7ea68b 0%, #966470 100%);
+            --gradient-mix: linear-gradient(135deg, #d16e4f 0%, #7ea68b 100%);
+            --gradient-bg: linear-gradient(180deg, #fef8f5 0%, #f5e9e3 50%, #e8f2ed 100%);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f5e9e3;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(254, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(209, 110, 79, 0.1);
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 30px rgba(209, 110, 79, 0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Comfortaa', cursive;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-mix);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '🚀';
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-warm);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .hero-bg .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .hero-bg .shape:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-color);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .hero-bg .shape:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-color);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: 5s;
+        }
+
+        .hero-bg .shape:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            background: var(--secondary-color);
+            top: 50%;
+            right: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-mix);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--gradient-warm);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(209, 110, 79, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(209, 110, 79, 0.4);
+        }
+
+        /* Seções */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--gradient-mix);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Serviços */
+        .services {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 40px;
+            padding: 4rem 2rem;
+            margin: 2rem auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-warm);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(209, 110, 79, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Cases de Sucesso */
+        .cases-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .case-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(126, 166, 139, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px) rotate(1deg);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 40px rgba(126, 166, 139, 0.2);
+        }
+
+        .case-card:hover::after {
+            opacity: 1;
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .case-metric {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-cool);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .case-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-results {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .result-tag {
+            background: rgba(126, 166, 139, 0.15);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 40px;
+            padding: 4rem 2rem;
+            margin: 2rem auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonials-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 1rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) #f5e9e3;
+        }
+
+        .testimonials-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .testimonial-card {
+            min-width: 350px;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 25px;
+            scroll-snap-align: start;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--secondary-color);
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 15px 40px rgba(224, 163, 142, 0.3);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-cool);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .testimonial-info h4 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .testimonial-info p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.8;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            position: absolute;
+            left: -0.5rem;
+            top: -0.5rem;
+            font-size: 3rem;
+            color: var(--secondary-color);
+            opacity: 0.3;
+        }
+
+        /* Rodapé */
+        footer {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Comfortaa', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-mix);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-logo::before {
+            content: '🚀';
+            font-size: 1.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(209, 110, 79, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--gradient-warm);
+            color: white;
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 10px 25px rgba(209, 110, 79, 0.3);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 2rem;
+        }
+
+        /* Botão Flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 65px;
+            height: 65px;
+            background: var(--gradient-cool);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 5px 25px rgba(126, 166, 139, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: bounce-wpp 2s infinite;
+        }
+
+        @keyframes bounce-wpp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: var(--gradient-mix);
+            box-shadow: 0 8px 35px rgba(126, 166, 139, 0.6);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cases-container {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-slider {
+                gap: 1rem;
+            }
+
+            .testimonial-card {
+                min-width: 280px;
+            }
+
+            .services, .testimonials {
+                margin: 1rem;
+                padding: 3rem 1rem;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animações de scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Menu mobile button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Efeitos de interação */
+        .emoji-decoration {
+            position: absolute;
+            font-size: 2rem;
+            animation: float-emoji 3s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes float-emoji {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">Boost Traffic</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#cases">Cases</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Vamos Turbinar Seus Resultados! 🚀</h1>
+            <p>Transformamos cliques em conversões com estratégias de tráfego pago que realmente funcionam</p>
+            <a href="#servicos" class="cta-button">Vamos Começar!</a>
+        </div>
+        <span class="emoji-decoration" style="top: 20%; left: 10%;">💡</span>
+        <span class="emoji-decoration" style="top: 60%; right: 15%; animation-delay: 1s;">📈</span>
+        <span class="emoji-decoration" style="bottom: 20%; left: 20%; animation-delay: 2s;">🎯</span>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services" id="servicos">
+        <h2 class="section-title fade-in">Nossos Superpoderes</h2>
+        <p class="section-subtitle fade-in">Ferramentas e estratégias para levar seu negócio ao próximo nível</p>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Gestão de Tráfego Pago</h3>
+                <p>Criamos campanhas incríveis no Google Ads, Facebook Ads e outras plataformas que fazem seu caixa soar! 💰</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Análise de Métricas</h3>
+                <p>Monitoramos tudo com lupa! Cada clique, cada conversão, cada real investido tem um propósito claro. 📊</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Criação de Campanhas</h3>
+                <p>Anúncios que grudam na mente do seu cliente! Criativos que geram engajamento e conversões de verdade. 🎨</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases de Sucesso -->
+    <section id="cases">
+        <h2 class="section-title fade-in">Histórias de Sucesso</h2>
+        <p class="section-subtitle fade-in">Resultados reais que falam por si só</p>
+        <div class="cases-container">
+            <div class="case-card fade-in">
+                <div class="case-header">
+                    <h3 class="case-title">E-commerce de Moda</h3>
+                    <div class="case-metric">320%</div>
+                </div>
+                <p class="case-description">Aumento nas vendas através de campanhas no Instagram Shopping e Google Shopping.</p>
+                <div class="case-results">
+                    <span class="result-tag">ROAS 5.2x</span>
+                    <span class="result-tag">CTR 8.5%</span>
+                    <span class="result-tag">CPC -35%</span>
+                </div>
+            </div>
+            <div class="case-card fade-in">
+                <div class="case-header">
+                    <h3 class="case-title">Clínica Estética</h3>
+                    <div class="case-metric">180%</div>
+                </div>
+                <p class="case-description">Geração de leads qualificados para agendamentos de consultas.</p>
+                <div class="case-results">
+                    <span class="result-tag">CPL R$45</span>
+                    <span class="result-tag">Conversão 22%</span>
+                    <span class="result-tag">+150 agendamentos/mês</span>
+                </div>
+            </div>
+            <div class="case-card fade-in">
+                <div class="case-header">
+                    <h3 class="case-title">Software SaaS</h3>
+                    <div class="case-metric">250%</div>
+                </div>
+                <p class="case-description">Crescimento de assinaturas através de campanhas no LinkedIn Ads.</p>
+                <div class="case-results">
+                    <span class="result-tag">CAC -40%</span>
+                    <span class="result-tag">LTV 3.5x</span>
+                    <span class="result-tag">MRR +R$85k</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="testimonials" id="depoimentos">
+        <h2 class="section-title fade-in">O Que Nossos Clientes Dizem</h2>
+        <p class="section-subtitle fade-in">Feedbacks que aquecem o coração 💚</p>
+        <div class="testimonials-slider">
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">M</div>
+                    <div class="testimonial-info">
+                        <h4>Maria Silva</h4>
+                        <p>CEO, Fashion Store</p>
+                    </div>
+                </div>
+                <p class="testimonial-text">
+                    A Boost Traffic mudou nosso jogo! Em 3 meses triplicamos as vendas. Equipe incrível e resultados que falam mais alto!
+                </p>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">J</div>
+                    <div class="testimonial-info">
+                        <h4>João Santos</h4>
+                        <p>Diretor, Clínica Belle</p>
+                    </div>
+                </div>
+                <p class="testimonial-text">
+                    ROI impressionante! A equipe entende nosso nicho e entrega resultados consistentes. Recomendo de olhos fechados!
+                </p>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">A</div>
+                    <div class="testimonial-info">
+                        <h4>Ana Costa</h4>
+                        <p>Founder, TechSolutions</p>
+                    </div>
+                </div>
+                <p class="testimonial-text">
+                    Finalmente uma agência que entende B2B! Campanhas no LinkedIn trouxeram clientes de alto valor. Top!
+                </p>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">P</div>
+                    <div class="testimonial-info">
+                        <h4>Pedro Lima</h4>
+                        <p>Marketing, EduCorp</p>
+                    </div>
+                </div>
+                <p class="testimonial-text">
+                    Análise detalhada e estratégias certeiras. Nosso CAC caiu 40% e as vendas dispararam. Equipe nota 10!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Boost Traffic</div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer-text">
+                © 2024 Boost Traffic. Todos os direitos reservados.<br>
+                Vamos juntos transformar seu negócio! 🚀
+            </p>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20turbinar%20meus%20resultados%20com%20tr%C3%A1fego%20pago.%20Podemos%20conversar%3F" 
+       class="whatsapp-float" 
+       target="_blank" 
+       aria-label="Contato via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação de fade-in no scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animação dos cards de serviço
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Menu mobile
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.cssText = `
+                    position: fixed;
+                    top: 70px;
+                    left: 0;
+                    right: 0;
+                    background: white;
+                    flex-direction: column;
+                    padding: 2rem;
+                    gap: 1rem;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    z-index: 999;
+                `;
+            }
+        });
+
+        // Fechar menu ao clicar em um link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+
+        // Ajustar menu ao redimensionar
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+                navLinks.style.cssText = '';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+
+        // Adicionar emojis aleatórios flutuantes
+        const emojis = ['🚀', '💡', '📈', '🎯', '💰', '⭐', '🔥', '💚'];
+        const createFloatingEmoji = () => {
+            const emoji = document.createElement('div');
+            emoji.className = 'emoji-decoration';
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + '%';
+            emoji.style.top = Math.random() * 100 + '%';
+            emoji.style.animationDelay = Math.random() * 3 + 's';
+            emoji.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+            document.body.appendChild(emoji);
+            
+            setTimeout(() => {
+                emoji.remove();
+            }, 10000);
+        };
+
+        // Criar emojis periodicamente
+        setInterval(createFloatingEmoji, 5000);
+    </script>
+</body>
+</html>
