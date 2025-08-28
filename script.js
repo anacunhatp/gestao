@@ -89,22 +89,24 @@
             }
         });
 
-        // Adicionar emojis aleatórios flutuantes
-        const emojis = ['🚀', '💡', '📈', '🎯', '💰', '⭐', '🔥', '💚'];
+        // Adicionar emojis aleatórios flutuantes apenas na .hero
+        const emojis = ['🚀', '💡', '📈', '🎯', '💰', '⭐', '🔥', '🧡','💵','💹'];
         const createFloatingEmoji = () => {
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
             const emoji = document.createElement('div');
             emoji.className = 'emoji-decoration';
             emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             emoji.style.left = Math.random() * 100 + '%';
             emoji.style.top = Math.random() * 100 + '%';
+            emoji.style.position = 'absolute';
             emoji.style.animationDelay = Math.random() * 3 + 's';
             emoji.style.fontSize = (Math.random() * 1 + 1) + 'rem';
-            document.body.appendChild(emoji);
-            
+            hero.appendChild(emoji);
+
             setTimeout(() => {
                 emoji.remove();
-            }, 10000);
+            }, 2000);
         };
-
         // Criar emojis periodicamente
-        setInterval(createFloatingEmoji, 5000);
+        setInterval(createFloatingEmoji, 600);
