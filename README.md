@@ -1,11 +1,3 @@
-## 🧩 Estrutura do Projeto
-
-```html
-📁 index.html
-📁 style.css
-📁 scripts.js
-📁 assets/
-
 
 # 🌟 Do Forno ao Funil
 
