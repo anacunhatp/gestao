@@ -743,3 +743,13 @@ footer {
         transform: translateY(-20px) rotate(10deg);
     }
 }
+
+
+.testimonials-slider{
+    overflow: hidden;
+    scrollbar-width: none; /* Firefox */
+}
+
+.testimonials-slider::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
+}

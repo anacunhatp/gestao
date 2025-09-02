@@ -110,3 +110,62 @@
         };
         // Criar emojis periodicamente
         setInterval(createFloatingEmoji, 600);
+
+        
+      // contagem progressiva de numeros
+
+document.addEventListener('DOMContentLoaded', function() {
+    function animateCounter(element, target, duration = 15000) {
+        let startTime = null;
+        let prefix = element.getAttribute('data-prefix') || '';
+        let suffix = element.getAttribute('data-suffix') || '';
+        let decimals = (target % 1 !== 0) ? 1 : 0; // 1 casa decimal se for float
+
+        function update(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            let value = progress * target;
+            value = decimals ? value.toFixed(1) : Math.floor(value);
+            element.textContent = prefix + value + suffix;
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                element.textContent = prefix + target + suffix;
+            }
+        }
+        requestAnimationFrame(update);
+    }
+
+    document.querySelectorAll('[data-target]').forEach(function(el) {
+        const target = parseFloat(el.getAttribute('data-target'));
+        animateCounter(el, target);
+    });
+});
+
+
+
+
+/* // ...existing code...
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ...existing code...
+
+    // Carrossel automático de depoimentos
+    const slider = document.querySelector('.testimonials-slider');
+    const cards = slider ? slider.querySelectorAll('.testimonial-card') : [];
+    let current = 0;
+
+    function showCard(index) {
+        cards.forEach((card, i) => {
+            card.style.display = i === index ? 'block' : 'none';
+        });
+    }
+
+    if (cards.length > 0) {
+        showCard(current);
+        setInterval(() => {
+            current = (current + 1) % cards.length;
+            showCard(current);
+        }, 3500); // Troca a cada 3,5 segundos
+    }
+}); */
