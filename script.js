@@ -1,83 +1,3 @@
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scroll para links de navegação
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Animação de fade-in no scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Animação dos cards de serviço
-        const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
-        });
-
-        // Menu mobile
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.cssText = `
-                    position: fixed;
-                    top: 70px;
-                    left: 0;
-                    right: 0;
-                    background: white;
-                    flex-direction: column;
-                    padding: 2rem;
-                    gap: 1rem;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-                    display: flex;
-                    z-index: 999;
-                `;
-            }
-        });
-
-        // Fechar menu ao clicar em um link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
-                }
-            });
-        });
 
         // Ajustar menu ao redimensionar
         window.addEventListener('resize', () => {
@@ -144,28 +64,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+ // Função para animar elementos quando aparecem na tela
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-/* // ...existing code...
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-document.addEventListener('DOMContentLoaded', function() {
-    // ...existing code...
-
-    // Carrossel automático de depoimentos
-    const slider = document.querySelector('.testimonials-slider');
-    const cards = slider ? slider.querySelectorAll('.testimonial-card') : [];
-    let current = 0;
-
-    function showCard(index) {
-        cards.forEach((card, i) => {
-            card.style.display = i === index ? 'block' : 'none';
+        // Observar todos os elementos com classe fade-in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
-    }
 
-    if (cards.length > 0) {
-        showCard(current);
-        setInterval(() => {
-            current = (current + 1) % cards.length;
-            showCard(current);
-        }, 3500); // Troca a cada 3,5 segundos
-    }
-}); */
+        // Efeito de scroll no header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (header) {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        });
+
+        // Verificar se o carrossel foi carregado
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.querySelector('.carousel-track');
+            if (track) {
+                const cards = track.querySelectorAll('.testimonial-card');
+                console.log('Carrossel carregado com', cards.length, 'cards');
+            }
+        });
